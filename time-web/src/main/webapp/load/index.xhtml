@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: vk
+  Date: 21.03.17
+  Time: 17:50
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/resources/templates/default.xhtml">
+    <ui:param name="bean" value="#{uploadBean}"/>
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true"/>
+            <p:panel style="margin-bottom: 10px;">
+                <p:fileUpload fileUploadListener="#{uploadBean.handleFileUpload}" mode="advanced" dragDropSupport="false" update="@form" fileLimit="3"/>
+            </p:panel>
+            <p:dataTable value="#{uploadBean.events}" var="event">
+                <p:column headerText="Date">
+                    <h:outputText value="#{event.date.time}">
+                        <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Person">
+                    <h:outputText value="#{event.person}"/>
+                </p:column>
+                <p:column headerText="Event">
+                    <h:outputText value="#{event.event}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

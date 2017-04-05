@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: vk
+  Date: 29.12.16
+  Time: 15:27
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title><h:outputText value="#{bean.title}"/></title>
+</h:head>
+<h:body>
+    <p:panel style="margin-bottom: 10px;">
+        <h3>Time sheet</h3>
+    </p:panel>
+
+    <p:menubar style="margin-bottom: 10px;">
+        <p:menuitem value="Upload" outcome="/load/index"/>
+        <p:menuitem value="Data" outcome="/data/index"/>
+    </p:menubar>
+
+    <p:panel style="margin-bottom: 10px;" rendered="#{not empty bean.title}">
+        <h4><h:outputText value="#{bean.title}"/></h4>
+    </p:panel>
+
+    <ui:insert name="content">
+        Place your content here
+    </ui:insert>
+</h:body>
+</html>
