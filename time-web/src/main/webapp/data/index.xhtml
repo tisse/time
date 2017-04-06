@@ -23,6 +23,8 @@
 
             <p:panel style="margin-bottom: 10px;">
                 <p:inputText placeholder="Person" value="#{dataListBean.filter.person}" style="margin-right: 10px;"/>
+                <p:calendar placeholder="From" pattern="dd.MM.yyyy" value="#{dataListBean.filter.from}" style="margin-right: 10px;" converter="CalendarConverter"/>
+                <p:calendar placeholder="To" pattern="dd.MM.yyyy" value="#{dataListBean.filter.to}" style="margin-right: 10px;" converter="CalendarConverter"/>
                 <p:commandButton value="Search" action="#{dataListBean.search}" update="@form"/>
             </p:panel>
 

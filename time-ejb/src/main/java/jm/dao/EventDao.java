@@ -38,13 +38,13 @@ public class EventDao extends BaseDao<Event, EventFilter> {
             criteria.add(Restrictions.eq("person", filter.getPerson()));
         }
 
-        filter.getFrom().ifPresent(from -> {
-            criteria.add(Restrictions.ge("date", from));
-        });
+        if (null != filter.getFrom()) {
+            criteria.add(Restrictions.ge("date", filter.getFrom()));
+        }
 
-        filter.getTo().ifPresent(to -> {
-            criteria.add(Restrictions.le("date", to));
-        });
+        if (null != filter.getTo()) {
+            criteria.add(Restrictions.le("date", filter.getTo()));
+        }
 
         return criteria;
     }
