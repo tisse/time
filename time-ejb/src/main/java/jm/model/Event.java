@@ -18,16 +18,10 @@ import java.util.Calendar;
         @Index(name = "time_event_ix0002", columnList = "person_name"),
         @Index(name = "time_event_ix0003", columnList = "event_hash")
 })
-public class Event extends BaseEntity {
+public class Event extends BaseEvent {
 
     @Column(name = "event_name")
     private String event;
-
-    @Column(name = "person_name")
-    private String person;
-
-    @Column(name = "event_date")
-    private Calendar date;
 
     @Column(name = "event_hash")
     private String hash;
@@ -40,29 +34,12 @@ public class Event extends BaseEntity {
         this.event = event;
     }
 
-    public String getPerson() {
-        return person;
-    }
-
-    public void setPerson(String person) {
-        this.person = person;
-    }
-
-    public Calendar getDate() {
-        return date;
-    }
-
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append(super.toString())
                 .append("event", event)
-                .append("person", person)
-                .append("date", date)
                 .toString();
     }
 
