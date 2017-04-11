@@ -13,6 +13,7 @@ import java.util.Calendar;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "ReportDailyEvent.report", query = "select round(rand()*1000000000) as id, month as event_month, date as event_date, person as person_name, inx as event_in, oux as event_out,timediff(oux, inx) as event_jt from (\n" +
                 "select month(te.event_date) month, date(te.event_date) date, person_name person, min(te.event_date) inx, max(te.event_date) oux FROM test.time_event te\n" +
+                "where (person_name = :person or :person is null) " +
                 "group by month(te.event_date), date(te.event_date), person_name\n" +
                 "order by month(te.event_date), date(te.event_date), person_name\n" +
                 ") a \n" +

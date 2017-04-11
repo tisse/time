@@ -15,8 +15,10 @@ import java.util.List;
 @Stateless
 public class ReportDailyEventDao extends BaseDao<ReportDailyEvent, ReportDailyEventFilter> {
 
-    public List<ReportDailyEvent> report(){
-        return getEntityManager().createNamedQuery("ReportDailyEvent.report", ReportDailyEvent.class).getResultList();
+    public List<ReportDailyEvent> report(ReportDailyEventFilter filter){
+        return getEntityManager().createNamedQuery("ReportDailyEvent.report", ReportDailyEvent.class)
+                .setParameter("person", filter.getPerson())
+                .getResultList();
     }
 
 

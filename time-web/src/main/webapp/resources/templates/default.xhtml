@@ -17,7 +17,10 @@
 </h:head>
 <h:body>
     <p:panel style="margin-bottom: 10px;">
-        <h3>Time sheet</h3>
+        <div class="ui-g">
+            <div class="ui-g-9">Time sheet</div>
+            <div class="ui-g-3" style="text-align: right;"><h:outputText value="#{indexBean.loginData.person.name}"/></div>
+        </div>
     </p:panel>
 
     <p:menubar style="margin-bottom: 10px;">
@@ -27,7 +30,7 @@
     </p:menubar>
 
     <p:panel style="margin-bottom: 10px;" rendered="#{not empty bean.title}">
-        <h4><h:outputText value="#{bean.title}"/></h4>
+        <h:outputText value="#{bean.title}"/>
     </p:panel>
 
     <ui:insert name="content">

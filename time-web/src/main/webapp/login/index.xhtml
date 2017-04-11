@@ -16,9 +16,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/resources/templates/default.xhtml">
-    <ui:param name="bean" value="#{indexBean}"/>
+    <ui:param name="bean" value="#{loginBean}"/>
     <ui:define name="content">
-
+        <h:form>
+            <p:commandButton value="go with Google" action="#{loginBean.google}" ajax="false"/>
+        </h:form>
     </ui:define>
 </ui:composition>
 

@@ -12,6 +12,7 @@ import org.primefaces.model.SortOrder;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.util.List;
 import java.util.Map;
@@ -25,19 +26,29 @@ import java.util.Optional;
 @ViewScoped
 public class ReportDailyEventListBean extends BaseBean {
 
+    @ManagedProperty(value = "#{loginData}")
+    private LoginData loginData;
+
+
     @EJB private ReportDailyEventDao reportDailyEventDao;
     private ReportDailyEventFilter filter;
     private List<ReportDailyEvent> events;
 
     @PostConstruct
     private void prepare(){
+        if (null == loginData || null == loginData.getPerson()){
+            redirect(getRequest().getContextPath()+"/login/index.html");
+            return;
+        }
+
         filter = new ReportDailyEventFilter();
-        events = reportDailyEventDao.report();
+        filter.setPerson(loginData.getPerson().getName());
+        events = reportDailyEventDao.report(filter);
 
     }
 
     public void search(){
-        events = reportDailyEventDao.report();
+        events = reportDailyEventDao.report(filter);
     }
 
     public ReportDailyEventFilter getFilter() {
@@ -58,5 +69,13 @@ public class ReportDailyEventListBean extends BaseBean {
 
     public void setEvents(List<ReportDailyEvent> events) {
         this.events = events;
+    }
+
+    public LoginData getLoginData() {
+        return loginData;
+    }
+
+    public void setLoginData(LoginData loginData) {
+        this.loginData = loginData;
     }
 }
