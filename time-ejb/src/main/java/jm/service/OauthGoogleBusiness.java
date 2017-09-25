@@ -35,8 +35,8 @@ import java.util.logging.Logger;
 @Stateless
 public class OauthGoogleBusiness {
 
-    public static final String API_KEY = "770230208150-q06s7om6mc83j0mn3uuivmdbpr55h2tu.apps.googleusercontent.com";
-    public static final String API_SECRET = "mbdCnFDZY4mJ93UokNYEuzJA";
+    public static final String API_KEY = "API_KEY";
+    public static final String API_SECRET = "API_SECRET";
     public static final String SCOPE = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/admin.directory.group.member.readonly";
     @Inject
     private Logger logger;
